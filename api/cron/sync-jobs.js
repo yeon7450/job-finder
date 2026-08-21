@@ -54,8 +54,9 @@ async function supabaseRequest(url, key, options = {}) {
     ...options,
     headers: { apikey: key, Authorization: `Bearer ${key}`, ...(options.headers || {}) }
   });
-  if (!result.ok) throw new Error(`Supabase returned ${result.status}: ${await result.text()}`);
-  return result.status === 204 ? null : result.json();
+  const body = await result.text();
+  if (!result.ok) throw new Error(`Supabase returned ${result.status}: ${body}`);
+  return body ? JSON.parse(body) : null;
 }
 
 module.exports = async function handler(request, response) {
