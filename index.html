@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>커리어픽 — 품질관리 채용공고 파인더</title>
+    <meta name="description" content="응용화학공학 전공자를 위한 품질관리 인턴·신입 채용공고 파인더" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#top"><span class="brand-mark">✦</span><span>커리어픽</span></a>
+        <div class="profile-mini"><div class="avatar">민</div><div><strong>응용화학공학 4학년</strong><small>품질관리 공고 탐색 중</small></div></div>
+        <nav class="nav-list" aria-label="주 메뉴"><a class="nav-item active" href="#finder"><span>⌂</span> 공고 찾기 <b id="navCount">0</b></a><a class="nav-item" href="#saved"><span>♡</span> 저장한 공고 <b class="muted-count" id="savedCount">0</b></a><a class="nav-item" href="#profile"><span>◎</span> 내 프로필</a></nav>
+        <div class="sidebar-bottom"><div class="tip-card"><span class="tip-icon">✧</span><strong>추천 순서 안내</strong><p>직무·산업·지역 조건이 맞고 신입 지원이 가능한 공고를 위로 올려요.</p></div><a class="nav-item subtle" href="#help"><span>?</span> 도움말</a></div>
+      </aside>
+      <main class="main-content" id="top">
+        <header class="topbar"><div class="breadcrumb">채용공고 파인더 <span>/</span> 품질관리</div><div class="top-actions"><button class="icon-button" aria-label="검색 도움말">?</button><div class="avatar small">민</div></div></header>
+        <section class="hero"><div><p class="eyebrow">CAREER FINDER <span>✦</span></p><h1>나에게 맞는<br /><em>품질관리 기회</em>를 찾아보세요.</h1><p class="subcopy">응용화학공학 전공자를 위한 인턴·신입 공고를 추천 순서로 보여드려요.</p></div><div class="hero-art" aria-hidden="true"><div class="hero-circle"></div><span class="hero-spark one">✦</span><span class="hero-spark two">✧</span><div class="hero-line"></div><div class="hero-orbit"></div></div></section>
+        <section class="finder-section" id="finder">
+          <div class="section-heading"><div><div class="heading-label">FIND YOUR NEXT STEP</div><h2>공고 찾기</h2><p>조건을 고른 뒤 적용하면 나에게 맞는 공고만 볼 수 있어요.</p></div><div class="result-summary"><strong id="resultCount">0</strong>개 공고</div></div>
+          <div class="filter-panel">
+            <div class="filter-row"><label>직무<select id="roleFilter"><option value="">전체 직무</option><option value="품질관리">품질관리(QC/QA)</option></select></label><label>산업 분야<select id="industryFilter"><option value="">전체 산업</option><option value="화학·소재">화학·소재</option><option value="제약·바이오">제약·바이오</option></select></label><label>고용 형태<select id="typeFilter"><option value="">전체 형태</option><option value="인턴">인턴</option><option value="신입 정규직">신입 정규직</option></select></label><label>근무 지역<select id="locationFilter"><option value="">전체 지역</option><option value="대전·충청권">대전·충청권</option><option value="수도권">수도권</option></select></label></div>
+            <div class="filter-row second-row"><label>주요 업무<select id="dutyFilter"><option value="">전체 업무</option><option value="시험·분석">시험·분석</option><option value="품질 데이터 관리">품질 데이터 관리</option></select></label><label>경력 요건<select id="experienceFilter"><option value="">전체 경력</option><option value="신입 가능">신입 가능</option><option value="경력 무관">경력 무관</option></select></label><label>전공 조건<select id="majorFilter"><option value="">전체 전공</option><option value="화학·공학 계열">화학·공학 계열</option></select></label><label>회사 규모<select id="sizeFilter"><option value="">전체 규모</option><option value="대기업·중견기업">대기업·중견기업</option><option value="중소기업·스타트업">중소기업·스타트업</option></select></label></div>
+            <div class="filter-actions"><label class="check-label"><input type="checkbox" id="preferenceFilter" /> 우대 조건 있음</label><button class="reset-button" id="resetButton">초기화</button><button class="apply-button" id="applyButton">조건 적용 <span>→</span></button></div>
+          </div><div class="active-query" id="activeQuery" hidden></div>
+        </section>
+        <section class="results-section"><div class="results-toolbar"><div><h2>추천 공고</h2><p>추천 규칙에 따라 관련도가 높은 순서로 정렬했어요.</p></div><div class="sort-control"><span>정렬</span><select id="sortFilter"><option value="recommendation">추천순</option><option value="deadline">마감 임박순</option></select></div></div><div class="job-grid" id="jobGrid"></div><div class="empty-state" id="emptyState" hidden><span>⌕</span><h3>조건에 맞는 공고가 없어요</h3><p>필터를 조금 완화해서 다시 찾아보세요.</p></div></section>
+      </main>
+    </div>
+    <div class="modal-backdrop" id="detailModal" hidden><section class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="닫기">×</button><div class="modal-company" id="modalCompany"></div><div class="modal-match" id="modalMatch"></div><h2 id="modalTitle"></h2><p class="modal-meta" id="modalMeta"></p><div class="detail-tags" id="modalTags"></div><div class="detail-block"><h3>주요 업무</h3><p id="modalDuty"></p></div><div class="detail-block"><h3>지원 자격</h3><p id="modalQualification"></p></div><div class="modal-actions"><button class="save-detail" id="modalSave">♡ 저장</button><button class="apply-detail" id="modalApply">지원 페이지로 이동 <span>→</span></button></div></section></div>
+    <div class="toast" id="toast"></div><script src="app.js"></script>
+  </body>
+</html>
